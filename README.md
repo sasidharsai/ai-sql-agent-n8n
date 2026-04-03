@@ -133,9 +133,9 @@ You can import this into n8n to replicate the system.
 
 ## Screenshots
 
-![Workflow](screenshots/workflow.png)
-![AI Agent](screenshots/ai-agent.png)
-![Postgres](screenshots/postgres.png)
+## Workflow Overview
+
+![Workflow](screenshots/Screenshot workflow.png)
 
 ---
 
