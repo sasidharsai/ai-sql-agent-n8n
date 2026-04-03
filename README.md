@@ -1,6 +1,6 @@
 # AI-Powered SQL Agent with n8n & Supabase
 
-## Transforming Natural Language into Data Insights
+## 🚀 Transforming Natural Language into Data Insights
 
 This project demonstrates an end-to-end AI-powered data querying system that converts natural language questions into executable SQL queries and retrieves insights from a cloud-hosted PostgreSQL database.
 
@@ -8,7 +8,7 @@ Built using n8n, Supabase, and modern LLM APIs, the system mimics real-world ana
 
 ---
 
-## Key Highlights
+## 🔥 Key Highlights
 
 * Convert natural language questions into SQL queries automatically
 * Execute queries on a live PostgreSQL database hosted on Supabase
@@ -18,23 +18,23 @@ Built using n8n, Supabase, and modern LLM APIs, the system mimics real-world ana
 
 ---
 
-## Architecture
+## 🏗️ Architecture
 
-Natural Language Query
-↓
-AI Model (LLM)
-↓
-SQL Query Generation
-↓
-PostgreSQL Database (Supabase)
-↓
-Query Execution
-↓
-Result Returned to User
+Natural Language Query  
+↓  
+AI Model (LLM)  
+↓  
+SQL Query Generation  
+↓  
+PostgreSQL Database (Supabase)  
+↓  
+Query Execution  
+↓  
+Result Returned to User  
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 * **n8n** – Workflow automation engine
 * **Supabase (PostgreSQL)** – Cloud database and data storage
@@ -43,7 +43,7 @@ Result Returned to User
 
 ---
 
-## Data Pipeline
+## 📊 Data Pipeline
 
 * Imported structured datasets from CSV files into Supabase
 * Designed relational tables for analytics
@@ -52,7 +52,7 @@ Result Returned to User
 
 ---
 
-## Example Queries
+## ❓ Example Queries
 
 Users can ask:
 
@@ -64,7 +64,7 @@ The system dynamically converts these into SQL queries and executes them.
 
 ---
 
-## Sample SQL (Generated)
+## 🧪 Sample SQL (Generated)
 
 ```sql
 SELECT COUNT(*) AS total_customers
@@ -79,7 +79,7 @@ WHERE dc.market = 'India';
 
 ---
 
-## Challenges & Solutions
+## ⚠️ Challenges & Solutions
 
 **API Rate Limits**
 Encountered limitations across free-tier AI providers.
@@ -98,7 +98,7 @@ Handled text-based date fields using SQL transformations.
 
 ---
 
-## Key Learnings
+## 📚 Key Learnings
 
 * Built a complete AI-to-database interaction pipeline
 * Understood real-world limitations of LLM APIs
@@ -108,7 +108,7 @@ Handled text-based date fields using SQL transformations.
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 ai-sql-agent-n8n/
@@ -123,7 +123,7 @@ ai-sql-agent-n8n/
 
 ---
 
-## Workflow
+## 🔄 Workflow
 
 The full n8n workflow is included in `workflow.json`.
 
@@ -131,14 +131,15 @@ You can import this into n8n to replicate the system.
 
 ---
 
-
-
-## Workflow Overview
+## 📸 Workflow Overview
 
 The screenshot below shows the complete n8n workflow.
+
 ![Workflow](https://raw.githubusercontent.com/sasidharsai/ai-sql-agent-n8n/main/Screenshot%20workflow.png)
 
-## Future Improvements
+---
+
+## 🔮 Future Improvements
 
 * Integrate production-grade LLM APIs with stable billing
 * Improve accuracy for complex multi-table joins
@@ -147,7 +148,7 @@ The screenshot below shows the complete n8n workflow.
 
 ---
 
-## Why This Project Matters
+## 🎯 Why This Project Matters
 
 This project bridges the gap between AI and data analytics by enabling non-technical users to interact with databases using natural language.
 
