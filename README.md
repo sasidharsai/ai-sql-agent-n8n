@@ -136,10 +136,7 @@ You can import this into n8n to replicate the system.
 ## Workflow Overview
 
 The screenshot below shows the complete n8n workflow.
-
-![Workflow](<screenshots/Screenshot workflow.png>)
-
----
+![Workflow](https://raw.githubusercontent.com/sasidharsai/ai-sql-agent-n8n/main/Screenshot%20workflow.png)
 
 ## Future Improvements
 
