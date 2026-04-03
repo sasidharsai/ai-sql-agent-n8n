@@ -131,11 +131,13 @@ You can import this into n8n to replicate the system.
 
 ---
 
-## Screenshots
+
 
 ## Workflow Overview
 
-![Workflow](screenshots/Screenshot workflow.png)
+The screenshot below shows the complete n8n workflow.
+
+![Workflow](<screenshots/Screenshot workflow.png>)
 
 ---
 
