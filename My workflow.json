@@ -1,0 +1,203 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi there! 👋\n what insights are we doing today?",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "91841fc6-d63c-4b75-bfc8-cc77a794e07c",
+      "name": "When chat message received",
+      "webhookId": "498b5740-cab9-48eb-8f54-30838309c0fb"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a PostgreSQL assistant.\n\nFor every user question:\n1. Use the schema tool to identify the correct table and columns.\n2. Generate a single valid SQL query.\n3. Execute the SQL using the Postgres tool.\n4. Return only the final answer.\n\nRules:\n- Do not summarize the schema unless the user asks.\n- Do not say data is unavailable unless a query was executed and returned no rows.\n- Use only the tables and columns from the schema tool.\n- Keep queries efficient and minimal.\n- Do not retry more than once."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        352,
+        0
+      ],
+      "id": "abf3b62b-9628-487b-8a14-461450965521",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        352,
+        224
+      ],
+      "id": "b65df584-3496-4da6-9aa3-7966cb72fa8b",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cqtw88BDE3xcJwGt",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cqtw88BDE3xcJwGt",
+          "cachedResultName": "My workflow 2"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "sql_query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('sql_query', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "sql_query"
+          ],
+          "schema": [
+            {
+              "id": "sql_query",
+              "displayName": "sql_query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        480,
+        224
+      ],
+      "id": "2a730497-0944-424f-be81-ff72f065ee7c",
+      "name": "Call 'My workflow 2'"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Execute a SQL query in Postgr",
+        "operation": "executeQuery",
+        "query": "SELECT table_name, column_name\nFROM information_schema.columns\nWHERE table_schema = 'public'\n  AND table_name IN (\n    'dim_customer',\n    'fact_sales_monthly',\n    'gross_price'\n  )\nORDER BY table_name, ordinal_position;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgresTool",
+      "typeVersion": 2.6,
+      "position": [
+        608,
+        224
+      ],
+      "id": "8f8cc984-163d-423c-81b4-6d06a9ec8f53",
+      "name": "postgres",
+      "credentials": {
+        "postgres": {
+          "id": "1qztkCUsO7hsBjpV",
+          "name": "freight"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        224,
+        224
+      ],
+      "id": "20706200-a7c1-4f8d-8b6f-bec2bec6168e",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "B8ExPoQqJBc0DzSh",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'My workflow 2'": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "postgres": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "3484ee04-661b-4998-b1f0-ecde8b312863",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d7b36c55a153582ecd7314766a4345e89bdff8b661c30db3297641fad2dbea93"
+  },
+  "id": "jzL7dYtA1deO03Tk",
+  "tags": []
+}
